@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { Ionicons } from "@expo/vector-icons";
+import * as Linking from "expo-linking";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
@@ -13,11 +14,13 @@ import FiltersScreen from "../screens/FiltersScreen";
 
 import Colors from "../constant/Colors";
 
+const prefix = Linking.createURL("/");
 const MealsNavigator = createStackNavigator(
   {
     Categories: CategoriesScreen,
     CategoryMeals: {
       screen: CategoryMealsScreen,
+      path: "meal",
     },
     MealDetail: MealDetailScreen,
   },
@@ -101,4 +104,6 @@ const mainSideDrawer = createDrawerNavigator({
   Filter: filterNavigator,
 });
 
-export default createAppContainer(mainSideDrawer);
+const MainApp = () => <MealsNavigator uriPrefix={prefix} />;
+
+export default createAppContainer(MealsNavigator);
