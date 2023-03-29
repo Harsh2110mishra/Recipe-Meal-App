@@ -9,6 +9,8 @@ import { toggleFavourite } from "../store/actions/meals";
 
 const MealDetailScreen = (props) => {
   const mealId = props.navigation.getParam("mealId");
+  const catId = props.navigation.getParam("catId");
+
   const isMealFav = useSelector((state) => state.meals.FavouriteMeals).some(
     (meal) => meal.id === mealId
   );
@@ -44,6 +46,39 @@ const MealDetailScreen = (props) => {
       {selectedMeal.steps.map((steps) => (
         <ListItemDetail key={steps}>{steps}</ListItemDetail>
       ))}
+      <Text
+        style={{
+          fontSize: 12,
+          color: "black",
+          fontWeight: "bold",
+          marginHorizontal: 50,
+        }}
+      >
+        Long press the text to copy.
+      </Text>
+      <View
+        style={{
+          backgroundColor: "lightgrey",
+          marginHorizontal: 50,
+          borderRadius: 20,
+          marginVertical: 10,
+          marginBottom: 100,
+        }}
+      >
+        <Text
+          selectable
+          style={{
+            backgroundColor: "lightgrey",
+            textAlign: "center",
+            marginTop: 3,
+            marginLeft: 15,
+            marginBottom: 3,
+            marginRight: 10,
+          }}
+        >
+          {`exp:/192.168.0.105:19000/--/mealapp/${catId}/${mealId}`}
+        </Text>
+      </View>
     </ScrollView>
   );
 };

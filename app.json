@@ -2,7 +2,7 @@
   "expo": {
     "name": "Recipe App",
     "slug": "recipe-app",
-    "scheme": "mealApp",
+    "scheme": "mealapp",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",

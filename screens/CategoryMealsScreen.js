@@ -12,7 +12,11 @@ const CategoryMealScreen = (props) => {
   );
 
   return (
-    <MealListData listData={DisplayedMeal} navigation={props.navigation} />
+    <MealListData
+      listData={DisplayedMeal}
+      catId={catId}
+      navigation={props.navigation}
+    />
   );
 };
 CategoryMealScreen.navigationOptions = (navigationData) => {

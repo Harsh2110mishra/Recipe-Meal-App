@@ -14,15 +14,20 @@ import FiltersScreen from "../screens/FiltersScreen";
 
 import Colors from "../constant/Colors";
 
-const prefix = Linking.createURL("/");
 const MealsNavigator = createStackNavigator(
   {
-    Categories: CategoriesScreen,
+    Categories: {
+      screen: CategoriesScreen,
+      path: "mealapp",
+    },
     CategoryMeals: {
       screen: CategoryMealsScreen,
-      path: "meal",
+      path: "/:categoryId",
     },
-    MealDetail: MealDetailScreen,
+    MealDetail: {
+      screen: MealDetailScreen,
+      path: "/:categoryId/:mealId",
+    },
   },
   {
     defaultNavigationOptions: {
@@ -103,6 +108,8 @@ const mainSideDrawer = createDrawerNavigator({
   Meals: mealsTabNavigator,
   Filter: filterNavigator,
 });
+
+const prefix = Linking.makeUrl("/");
 
 const MainApp = () => <MealsNavigator uriPrefix={prefix} />;
 

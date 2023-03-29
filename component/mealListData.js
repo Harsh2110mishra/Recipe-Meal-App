@@ -14,6 +14,7 @@ const mealListData = (props) => {
             params: {
               mealId: itemData.item.id,
               mealTitle: itemData.item.title,
+              catId: props.catId,
             },
           });
         }}
